@@ -1,0 +1,75 @@
+- name: Install System Packages 1 (build-essential, cmake, pkg-config, pthread)
+  become: true
+  ansible.builtin.apt:
+    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 2 (lua, unzip, libtool, libtool-bin, gettext)
+  become: true
+  ansible.builtin.apt:
+    name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 3 (the rest)
+  become: true
+  ansible.builtin.apt:
+    name: 
+      - curl 
+      - htop 
+      - lsof 
+      - i3 
+      - i3blocks
+      - python3-pip 
+      - nvidia-settings 
+      - pavucontrol
+  
+  tags:
+    - install
+    - core
+
+- name: Install Clang
+  become: true
+  ansible.builtin.apt:
+    name: ["clang", "clang-11", "clang-12", "clangd", "clangd-10", "clangd-11", "clangd-12"]
+  tags:
+    - install
+    - neovim
+    - core
+
+
+- name: Install i3 config deps.
+  become: true
+  ansible.builtin.apt:
+    name:
+      - compton 
+      - network-manager-gnome 
+      - pulseaudio-utils 
+      - playerctl 
+      - feh 
+      - x11-xserver-utils 
+      - compton 
+      - copyq 
+      - flameshot 
+      - mate-power-manager-common 
+      - cbatticon 
+      - caffeine 
+      - xautolock 
+      - dunst 
+      - arandr
+  
+  tags:
+    - install
+    - core
+
+- name: Install betterlockscreen (i3 config deps).
+  shell: wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
+  tags:
+    - install
+    - core
+

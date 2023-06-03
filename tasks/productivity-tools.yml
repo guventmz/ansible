@@ -1,0 +1,13 @@
+- name: Install productivity packages. (tmux, fzf, xsel, tldr etc.)
+  become: true
+  apt:
+    name: 
+      - tmux 
+      - fzf 
+      - xsel 
+      - tldr 
+      - ripgrep
+  
+  tags:
+    - install
+    - productivity

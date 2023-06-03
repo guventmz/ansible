@@ -1,0 +1,21 @@
+
+- name: Required libraries for Docker.
+  become: true
+  ansible.builtin.apt:
+    name: ["curl", "ca-certificates", "gnupg"]
+  tags:
+    - docker
+
+- name: Docker Keyring Download and PPA settings.
+  become: true
+  shell: install -m 0755 -d /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && chmod a+r /etc/apt/keyrings/docker.gpg
+  tags:
+    - docker
+
+- name: Docker apt installation.
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    name: ["docker-ce", "docker-ce-cli", "containerd.io", "docker-buildx-plugin", "docker-compose-plugin"]
+  tags:
+    - docker

@@ -1,0 +1,29 @@
+- name: Install flatpak.
+  become: true
+  ansible.builtin.apt:
+    name: flatpak
+  tags:
+    - install
+    - flatpak
+    - desktopApps
+
+- name: Install Flatpak Apps.
+  become: true
+  community.general.flatpak:
+    names:
+      - com.bitwarden.desktop
+      - com.logseq.Logseq  
+      - com.slack.Slack
+      - com.spotify.Client
+      - com.visualstudio.code
+      - io.dbeaver.DBeaverCommunity
+      - org.libreoffice.LibreOffice
+      - org.remmina.Remmina 
+      - rest.insomnia.Insomnia
+      - us.zoom.Zoom
+  tags:
+    - install
+    - flatpak
+    - desktopApps
+
+
