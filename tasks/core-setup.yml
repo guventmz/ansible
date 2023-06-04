@@ -32,6 +32,7 @@
   tags:
     - install
     - core
+  when: 0 > 1
 
 - name: Install Clang
   become: true
@@ -62,13 +63,19 @@
       - xautolock 
       - dunst 
       - arandr
-  
+  tags:
+    - install
+    - core
+  when: 0 > 1
+
+- name: Install betterlockscreen (i3 config deps).
+  shell: wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
   tags:
     - install
     - core
 
-- name: Install betterlockscreen (i3 config deps).
-  shell: wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
+- name: Install lux (brightness controller) (i3 config deps).
+  shell: git clone https://github.com/Ventto/lux.git && cd lux && sudo make install
   tags:
     - install
     - core

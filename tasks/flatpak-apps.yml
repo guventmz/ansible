@@ -7,23 +7,32 @@
     - flatpak
     - desktopApps
 
-- name: Install Flatpak Apps.
-  become: true
-  community.general.flatpak:
-    names:
-      - com.bitwarden.desktop
-      - com.logseq.Logseq  
-      - com.slack.Slack
-      - com.spotify.Client
-      - com.visualstudio.code
-      - io.dbeaver.DBeaverCommunity
-      - org.libreoffice.LibreOffice
-      - org.remmina.Remmina 
-      - rest.insomnia.Insomnia
-      - us.zoom.Zoom
+- name: Add the flathub flatpak repository remote to the system installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
   tags:
     - install
     - flatpak
     - desktopApps
 
-
+- name: Install Flatpak Apps to the system installation.
+  community.general.flatpak:
+    name:
+      - com.bitwarden.desktop
+      - com.slack.Slack
+      - com.spotify.Client
+      - com.visualstudio.code
+      - io.dbeaver.DBeaverCommunity
+      - org.libreoffice.LibreOffice
+      - org.remmina.Remmina
+      - rest.insomnia.Insomnia
+      - us.zoom.Zoom
+    method: system
+    state: present
+  tags:
+    - install
+    - flatpak
+    - desktopApps
