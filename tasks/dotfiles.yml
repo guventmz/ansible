@@ -8,18 +8,7 @@
     - install
 
 - name: Cloning .dotfiles
-  shell: |
-    git clone git@github.com:guventmz/.dotfiles.git ~/.dotfiles
-          # eval $(ssh-agent)
-          # ssh-add {{ dest_key }}
-    #ansible.builtin.git:
-    #  repo: "git@github.com:guventmz/.dotfiles.git"
-    #  dest: "{{ lookup('env', 'HOME') }}/.dotfiles_testttt"
-    #  recursive: yes
-    #  update: yes
-    #  accept_hostkey: yes
-    #  version: main
-    #  key_file: "{{ dest_key }}"
+  shell: git clone git@github.com:guventmz/.dotfiles.git ~/.dotfiles
   tags:
     - dotfiles
     - stow
