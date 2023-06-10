@@ -5,8 +5,8 @@
     state: directory
   tags:
     - dotfiles
-    - install
     - ssh
+    - install
 
 - name: Install ssh key
   copy:
@@ -15,8 +15,8 @@
     mode: 0600
   tags:
     - dotfiles
-    - install
     - ssh
+    - install
 
 - name: Install ssh key public
   copy:
@@ -25,8 +25,8 @@
     mode: 0644
   tags:
     - dotfiles
-    - install
     - ssh
+    - install
 
 - name: Set authorized key took from file
   authorized_key:
@@ -34,4 +34,8 @@
     state: present
     key: "{{ lookup('file', item) }}"
   with_fileglob:
-  - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+    - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+  tags:
+    - dotfiles
+    - ssh
+    - install

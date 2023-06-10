@@ -3,10 +3,10 @@
   ansible.builtin.apt: 
     name: zsh
   tags: &tags_for_zsh_tasks 
-    - install
     - productivity
     - dotfiles
     - zsh
+    - install
     
 - name: Change shell to zsh
   become: yes

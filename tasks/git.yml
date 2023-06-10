@@ -4,11 +4,14 @@
     scope: global
     value: "guvenntmz@gmail.com"
   tags:
-  - git-personal
+    - git
+    - install
+
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "guven temiz"
   tags:
-  - git-personal
+    - git
+    - install

@@ -3,18 +3,18 @@
   ansible.builtin.apt:
     name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
   tags:
-    - install
     - neovim
     - core
+    - install
 
 - name: Install System Packages 2 (lua, unzip, libtool, libtool-bin, gettext)
   become: true
   ansible.builtin.apt:
     name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext"]
   tags:
-    - install
     - neovim
     - core
+    - install
 
 - name: Install System Packages 3 (the rest)
   become: true
@@ -28,20 +28,18 @@
       - python3-pip 
       - nvidia-settings 
       - pavucontrol
-  
   tags:
-    - install
     - core
-  when: 0 > 1
+    - install
 
 - name: Install Clang
   become: true
   ansible.builtin.apt:
     name: ["clang", "clang-11", "clang-12", "clangd", "clangd-10", "clangd-11", "clangd-12"]
   tags:
-    - install
     - neovim
     - core
+    - install
 
 
 - name: Install i3 config deps.
@@ -65,9 +63,8 @@
       - arandr
       - redshift
   tags:
-    - install
     - core
-  when: 0 > 1
+    - install
 
 - name: Install betterlockscreen (i3 config deps).
   shell: wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user

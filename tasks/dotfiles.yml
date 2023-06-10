@@ -3,9 +3,9 @@
   ansible.builtin.apt: 
     name: stow
   tags:
-    - install
     - dotfiles
     - stow
+    - install
 
 - name: Cloning .dotfiles
   shell: |
@@ -21,13 +21,13 @@
     #  version: main
     #  key_file: "{{ dest_key }}"
   tags:
-    - install
     - dotfiles
     - stow
+    - install
 
 - name: Stow dotfiles
   shell: cd $HOME/.dotfiles && ./ubuntu.sh
   tags:
-    - install
     - dotfiles
     - stow
+    - install

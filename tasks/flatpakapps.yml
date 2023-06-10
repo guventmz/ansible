@@ -3,9 +3,9 @@
   ansible.builtin.apt:
     name: flatpak
   tags:
-    - install
+    - desktopapps
     - flatpak
-    - desktopApps
+    - install
 
 - name: Add the flathub flatpak repository remote to the system installation
   community.general.flatpak_remote:
@@ -14,9 +14,9 @@
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
     method: system
   tags:
-    - install
+    - desktopapps
     - flatpak
-    - desktopApps
+    - install
 
 - name: Install Flatpak Apps to the system installation.
   community.general.flatpak:
@@ -33,6 +33,6 @@
     method: system
     state: present
   tags:
-    - install
+    - desktopapps
     - flatpak
-    - desktopApps
+    - install

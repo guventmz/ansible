@@ -9,7 +9,6 @@
       - ripgrep
       - "mysql-client"
       - pspg
-  
   tags:
     - install
     - productivity
